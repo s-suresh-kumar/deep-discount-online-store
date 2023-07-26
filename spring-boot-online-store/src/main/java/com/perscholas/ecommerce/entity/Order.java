@@ -8,7 +8,6 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -64,7 +63,7 @@ public class Order {
             if (orderItems == null) {
                 orderItems = new HashSet<>();
             }
-
+            System.out.println("I am in add method in Order.java");
             orderItems.add(item);
             item.setOrder(this);
         }

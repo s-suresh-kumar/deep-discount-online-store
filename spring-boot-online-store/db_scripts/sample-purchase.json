@@ -24,16 +24,16 @@
    },
    "orderItems":[
       {
-         "imageUrl":"assets/images/products/coffeemugs/coffeemug-luv2code-1000.png",
+         "imageUrl":"assets/images/products/EnglishBooks/TreasureIsland.jpg",
          "quantity":1,
          "unitPrice":18.99,
-         "productId":26
+         "productId":10
       },
       {
-         "imageUrl":"assets/images/products/mousepads/mousepad-luv2code-1000.png",
+         "imageUrl":"assets/images/products/GardenBooks/CreatingAGardenRetreat.jpg",
          "quantity":1,
-         "unitPrice":17.99,
-         "productId":51
+         "unitPrice":14.99,
+         "productId":11
       }
    ]
 }
