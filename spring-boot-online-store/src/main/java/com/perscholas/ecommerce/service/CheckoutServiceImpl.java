@@ -3,6 +3,7 @@ package com.perscholas.ecommerce.service;
 import com.perscholas.ecommerce.dao.CustomerRepository;
 import com.perscholas.ecommerce.dto.Purchase;
 import com.perscholas.ecommerce.dto.PurchaseResponse;
+import com.perscholas.ecommerce.entity.Customer;
 import com.perscholas.ecommerce.entity.Order;
 import com.perscholas.ecommerce.entity.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,10 @@ public class CheckoutServiceImpl implements CheckoutService{
         // populate order with billingAddress and shippingAddress
         order.setBillingAddress(purchase.getBillingAddress());
         order.setShippingAddress(purchase.getShippingAddress());
+
+        // populate customer with order
+        Customer customer = purchase.getCustomer();
+        customer.add(order);
 
         return null;
     }
