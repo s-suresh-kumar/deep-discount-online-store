@@ -6,11 +6,14 @@ import com.perscholas.ecommerce.dto.PurchaseResponse;
 import com.perscholas.ecommerce.entity.Customer;
 import com.perscholas.ecommerce.entity.Order;
 import com.perscholas.ecommerce.entity.OrderItem;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.UUID;
 
+@Service
 public class CheckoutServiceImpl implements CheckoutService{
 
     private CustomerRepository customerRepository;
@@ -21,6 +24,7 @@ public class CheckoutServiceImpl implements CheckoutService{
     }
 
     @Override
+    @Transactional
     public PurchaseResponse placeOrder(Purchase purchase) {
         // retrieve the order info from dto
         Order order = purchase.getOrder();
