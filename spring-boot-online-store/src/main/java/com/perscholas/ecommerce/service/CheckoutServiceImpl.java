@@ -4,7 +4,10 @@ import com.perscholas.ecommerce.dao.CustomerRepository;
 import com.perscholas.ecommerce.dto.Purchase;
 import com.perscholas.ecommerce.dto.PurchaseResponse;
 import com.perscholas.ecommerce.entity.Order;
+import com.perscholas.ecommerce.entity.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Set;
 import java.util.UUID;
 
 public class CheckoutServiceImpl implements CheckoutService{
@@ -24,7 +27,17 @@ public class CheckoutServiceImpl implements CheckoutService{
         // generate tracking number
         String orderTrackingNumber = generateOrderTrackingNumber();
         order.setOrderTrackingNumber(orderTrackingNumber);
-        
+
+        // populate order with orderItems
+        Set<OrderItem> orderItems = purchase.getOrderItems();
+        for (OrderItem item : orderItems) {
+            order.add(item);
+        }
+
+        // populate order with billingAddress and shippingAddress
+        order.setBillingAddress(purchase.getBillingAddress());
+        order.setShippingAddress(purchase.getShippingAddress());
+
         return null;
     }
 
