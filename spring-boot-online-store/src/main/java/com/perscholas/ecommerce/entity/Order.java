@@ -2,11 +2,15 @@ package com.perscholas.ecommerce.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import com.perscholas.ecommerce.controller.CheckoutController;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +20,8 @@ import java.util.Set;
 @Getter
 @Setter
 public class Order {
+
+    private static Logger logger = LoggerFactory.getLogger(CheckoutController.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,7 +69,7 @@ public class Order {
             if (orderItems == null) {
                 orderItems = new HashSet<>();
             }
-            System.out.println("I am in add method in Order.java");
+            logger.info("I am in add method in Order.java orderItem = " + item);
             orderItems.add(item);
             item.setOrder(this);
         }

@@ -1,5 +1,6 @@
 package com.perscholas.ecommerce.service;
 
+import com.perscholas.ecommerce.controller.CheckoutController;
 import com.perscholas.ecommerce.dao.CustomerRepository;
 import com.perscholas.ecommerce.dto.Purchase;
 import com.perscholas.ecommerce.dto.PurchaseResponse;
@@ -7,6 +8,8 @@ import com.perscholas.ecommerce.entity.Customer;
 import com.perscholas.ecommerce.entity.Order;
 import com.perscholas.ecommerce.entity.OrderItem;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,8 @@ import java.util.UUID;
 
 @Service
 public class CheckoutServiceImpl implements CheckoutService{
+
+    private static Logger logger = LoggerFactory.getLogger(CheckoutController.class);
 
     private CustomerRepository customerRepository;
 
@@ -49,6 +54,7 @@ public class CheckoutServiceImpl implements CheckoutService{
 
         // save to the database
         customerRepository.save(customer);
+        logger.info("Iam in placeOrder, orderTrackingNumber =  " + orderTrackingNumber);
 
         // return a response
         return new PurchaseResponse(orderTrackingNumber);
