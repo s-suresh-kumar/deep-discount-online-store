@@ -3,7 +3,7 @@
 
 # DEEP-DISCOUNT-ONLINE-STORE
 
-[![Thumbnail](spring-boot-online-store\thumb-1.JPG)](https://github.com/s-suresh-kumar/deep-discount-online-store)
+[![Thumbnail](spring-boot-online-store/thumb-1.JPG)](https://github.com/s-suresh-kumar/deep-discount-online-store)
 
 
 ## Table of Contents
@@ -36,7 +36,7 @@ This is a angular front end for DeepDiscountOnlineStore. Backend is done usign J
 
 To get an overview of tables take a  look at the ER diagram below: MySQL and spring boot hibernate is used to realize the database needs.
 
-![Database ER Diagram](spring-boot-online-store\ERDiagram.JPG)
+![Database ER Diagram](spring-boot-online-store/ERDiagram.JPG)
 
 ## Installation
 
