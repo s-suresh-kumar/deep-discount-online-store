@@ -31,6 +31,8 @@ public class CheckoutServiceImpl implements CheckoutService{
     @Override
     @Transactional
     public PurchaseResponse placeOrder(Purchase purchase) {
+        logger.info("Iam in placeOrder BEGIN, orderTrackingNumber =  ");
+
         // retrieve the order info from dto
         Order order = purchase.getOrder();
 
@@ -50,7 +52,21 @@ public class CheckoutServiceImpl implements CheckoutService{
 
         // populate customer with order
         Customer customer = purchase.getCustomer();
+
+        // check if this is an existing customer
+        String theEmail = customer.getEmail();
+
+        Customer customerFromDB = customerRepository.findByEmail(theEmail);
+
+        if (customerFromDB != null) {
+            // we found them ... let's assign them accordingly
+            customer = customerFromDB;
+        }
+
         customer.add(order);
+
+        logger.info("Iam in placeOrder, just  before CustomerRepository.save," +
+                        " customer = ", customer);
 
         // save to the database
         customerRepository.save(customer);
